@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "97596647341",
+    "project_id": "reservify-e20a3",
+    "storage_bucket": "reservify-e20a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97596647341:android:c9d94c11a0193134f4e324",
+        "android_client_info": {
+          "package_name": "com.example.reservify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARvMmtvxSIhdIWSa0ytZmMuctkxXLakkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
