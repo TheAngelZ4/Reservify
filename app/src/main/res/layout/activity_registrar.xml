@@ -7,31 +7,30 @@
     android:background="#FFFFFF"
     tools:context=".Registrar">
 
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="332dp"
         android:layout_height="41dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:text="Ingresa todos lo datos para poder crear tu primera cuenta y sé parte de esta gran comunidad."
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="101dp"
         android:layout_height="21dp"
+        android:layout_marginTop="28dp"
         android:text="Crea tu cuenta."
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -59,91 +58,103 @@
         android:id="@+id/edtNombre"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="348dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textColorHint="@color/black"
-        android:hint="Ingresa tu nombre:"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/person"
         android:drawablePadding="10dp"
+        android:hint="Ingresa tu nombre:"
+        android:inputType="text"
         android:textColor="#252525"
+        android:textColorHint="#252525"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/edtApellidos"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
+        android:drawableStart="@drawable/person"
+        android:drawablePadding="10dp"
+        android:hint="Ingresa tu apellido:"
+        android:inputType="text"
+        android:textColor="#252525"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombre" />
 
     <EditText
         android:id="@+id/edtcorreo"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textColorHint="@color/black"
-        android:inputType="textEmailAddress"
-        android:textColor="#252525"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="Ingresa un correo:"
+        android:inputType="textEmailAddress"
+        android:textColor="#252525"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552"
-        android:hint="Ingresa un correo:" />
+        app:layout_constraintTop_toBottomOf="@+id/edtApellidos" />
 
     <EditText
         android:id="@+id/edtcontra"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
-        android:ems="10"
+        android:background="@drawable/edittext_background"
         android:hint="Ingresa una contraseña:"
         android:inputType="textPassword"
         android:textColor="#252525"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669"
-        app:passwordToggleEnabled="false" />
+        app:layout_constraintTop_toBottomOf="@+id/edtcorreo"
+        app:passwordToggleEnabled="true" />
 
     <EditText
         android:id="@+id/edtContraConfi"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
-        android:ems="10"
         android:hint="Confirma tu contraseña:"
         android:inputType="textPassword"
         android:textColor="#252525"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.782"
+        app:layout_constraintTop_toBottomOf="@+id/edtcontra"
         app:passwordToggleEnabled="true" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="322dp"
         android:layout_height="44dp"
-        android:backgroundTint="#000000"
-        android:onClick="registrarUsuario"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#191919"
+        android:onClick="Registrar"
         android:text="Registrarse"
         android:textColor="@color/white"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#000000"
-        android:textColorLink="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintTop_toBottomOf="@+id/edtContraConfi" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

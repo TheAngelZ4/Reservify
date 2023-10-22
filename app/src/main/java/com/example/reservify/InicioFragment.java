@@ -1,5 +1,8 @@
 package com.example.reservify;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -61,5 +64,7 @@ public class InicioFragment extends Fragment {
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_inicio, container, false);
+
+
     }
 }
