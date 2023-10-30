@@ -1,15 +1,29 @@
 package com.example.reservify;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.example.reservify.adapters.PopularAdapters;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +53,7 @@ public class InicioFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment InicioFragment.
      */
-    // TODO: Rename and change types and number of parameters
+    //TODO: Rename and change types and number of parameters
     public static InicioFragment newInstance(String param1, String param2) {
         InicioFragment fragment = new InicioFragment();
         Bundle args = new Bundle();
@@ -58,13 +72,41 @@ public class InicioFragment extends Fragment {
         }
     }
 
+    RecyclerView  popularRec;
+    FirebaseFirestore db;
+    List <PopularModel> popularModelList;
+    PopularAdapters popularAdapters;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        db = FirebaseFirestore.getInstance();
 
+        popularRec = view.findViewById(R.id.negocios_rec);
 
+        popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        popularModelList = new ArrayList<>();
+        popularAdapters = new PopularAdapters(getActivity(), popularModelList);
+        popularRec.setAdapter(popularAdapters);
+
+        db.collection("PopularNegocios")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                PopularModel popularModel = document.toObject(PopularModel.class);
+                                popularModelList.add(popularModel);
+                                popularAdapters.notifyDataSetChanged();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), "Error"+task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        return view;
     }
 }

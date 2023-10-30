@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,14 +24,18 @@ public class Login extends AppCompatActivity {
      FirebaseAuth mAuth;
      EditText edtcorreo;
      EditText edtcontra;
-
      TextView resetPassword;
+     ProgressBar progressBar;
+     Button btnIngresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
+        btnIngresar = findViewById(R.id.btnInicar);
         edtcorreo = findViewById(R.id.edtcorreo);
         edtcontra = findViewById(R.id.edtcontra);
         resetPassword = findViewById(R.id.resetPassword);
@@ -62,12 +68,13 @@ public class Login extends AppCompatActivity {
                             startActivity(i);
                             Toast.makeText(getApplicationContext(), "Bienvenido",
                                     Toast.LENGTH_SHORT).show();
-
                             //updateUI(user);
+                            progressBar.setVisibility(View.GONE);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "Correo o contraseña incorrecta",
                                     Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                             //updateUI(null);
                         }
                     }
