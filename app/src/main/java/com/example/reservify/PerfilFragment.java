@@ -7,12 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -40,6 +48,7 @@ public class PerfilFragment extends Fragment {
     Button  btnActualizar, btnCerrar;
     CircleImageView fotoPerfil;
     TextView txtNombre, txtApellido, txtCorreo;
+    Uri imagenUri = null;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -129,7 +138,6 @@ public class PerfilFragment extends Fragment {
                     txtNombre.setText(nombre);
                     txtApellido.setText(apellido);
                     txtCorreo.setText(correo);
-
                 }
             }
             @Override
@@ -139,6 +147,7 @@ public class PerfilFragment extends Fragment {
         });
         return view;
         }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -149,14 +158,14 @@ public class PerfilFragment extends Fragment {
             final StorageReference reference = storage.getReference().child("imagenPerfil")
                     .child(FirebaseAuth.getInstance().getUid());
 
-            //reference.putFile(perfilUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-              //  @Override
-                //public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                  //  Uri uri = firebaseAuth.getCurrentUser().getPhotoUrl();
-                    //Picasso.get().load(uri).into(fotoPerfil);
-                    //Toast.makeText(getContext(), "Imagen Actualizada", Toast.LENGTH_SHORT).show();
-                //}
-            //});
+            reference.putFile(perfilUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+              @Override
+              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                  Uri uri = firebaseAuth.getCurrentUser().getPhotoUrl();
+                    Picasso.get().load(uri).into(fotoPerfil);
+                    Toast.makeText(getContext(), "Imagen Actualizada", Toast.LENGTH_SHORT).show();
+                }
+            });
         }else{
             Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
         }

@@ -15,21 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    ProgressBar progressBar;
-    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        auth = FirebaseAuth.getInstance();
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
-
-        if(auth.getCurrentUser()!= null){
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
     }
 
     public void IrRegistrar(View view){

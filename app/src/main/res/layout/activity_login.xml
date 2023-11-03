@@ -116,18 +116,5 @@
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#191919"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtcontra"
-        app:layout_constraintVertical_bias="0.401"
-        android:scaleX=".5"
-        android:scaleY=".5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

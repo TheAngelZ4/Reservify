@@ -25,7 +25,6 @@ public class Login extends AppCompatActivity {
      EditText edtcorreo;
      EditText edtcontra;
      TextView resetPassword;
-     ProgressBar progressBar;
      Button btnIngresar;
 
     @Override
@@ -33,8 +32,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
         btnIngresar = findViewById(R.id.btnInicar);
         edtcorreo = findViewById(R.id.edtcorreo);
         edtcontra = findViewById(R.id.edtcontra);
@@ -69,12 +66,10 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Bienvenido",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(user);
-                            progressBar.setVisibility(View.GONE);
-                        } else {
+                        }else{
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "Correo o contraseña incorrecta",
                                     Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
                             //updateUI(null);
                         }
                     }

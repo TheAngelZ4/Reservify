@@ -17,6 +17,7 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
+        android:paddingLeft="-70dp"
         android:layout_marginTop="0.1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -25,16 +26,18 @@
         app:srcCompat="@drawable/reservify" />
 
     <EditText
-        android:elevation="3dp"
         android:id="@+id/buscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:drawableLeft="@drawable/search"
         android:background="@drawable/edittext_background"
-        android:padding="8dp"
+        android:drawableLeft="@drawable/search"
+        android:drawablePadding="15dp"
+        android:elevation="3dp"
         android:hint="Buscar"
-        android:drawablePadding="15dp"/>
+        android:padding="8dp"
+        android:inputType="text"
+        android:textColorHint="#333333"/>
 
     <LinearLayout
         android:layout_marginLeft="10dp"
@@ -139,7 +142,7 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:gravity="end"
-            android:text="Ver todos"
+            android:text="Ver todo"
             android:textColor="#000000"
             android:textSize="15dp" />
     </LinearLayout>

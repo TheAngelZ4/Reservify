@@ -23,7 +23,6 @@
 
     <Button
         android:id="@+id/btnRegister"
-        style="@style/Widget.Material3.Button"
         android:layout_width="322dp"
         android:layout_height="44dp"
         android:layout_marginBottom="92dp"
@@ -100,21 +99,6 @@
         app:layout_constraintVertical_bias="0.293"
         app:srcCompat="@drawable/foodelivering" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#191919"
-        android:scaleX=".5"
-        android:scaleY=".5"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966"
-        tools:visibility="gone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

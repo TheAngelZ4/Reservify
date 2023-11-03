@@ -1,18 +1,29 @@
 package com.example.reservify;
 
-public class PopularModel {
-    String nombre, descripcion, valoracion, tipo, imagen;
+import java.io.Serializable;
+
+public class PopularModel implements Serializable {
+    String id, nombre, descripcion, valoracion, tipo, imagen;
 
     public PopularModel() {
 
     }
 
-    public PopularModel(String nombre, String descripcion, String valoracion, String tipo, String imagen) {
+    public PopularModel(String id, String nombre, String descripcion, String valoracion, String tipo, String imagen) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valoracion = valoracion;
         this.tipo = tipo;
         this.imagen = imagen;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
