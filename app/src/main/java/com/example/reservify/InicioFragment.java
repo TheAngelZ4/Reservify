@@ -1,32 +1,27 @@
 package com.example.reservify;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.example.reservify.API.ApiServicesGenerator;
+import com.example.reservify.API.Api_Interface;
 import com.example.reservify.adapters.PopularAdapters;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.card.MaterialCardView;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.reservify.models.PopularModel;
+import com.example.reservify.models.PopularModelResponse;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,6 +34,8 @@ public class InicioFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private List<PopularModel> LISTA_NEGOCIOS;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -86,15 +83,45 @@ public class InicioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
 
-        db = FirebaseFirestore.getInstance();
+        //db = FirebaseFirestore.getInstance();
 
         popularRec = view.findViewById(R.id.negocios_rec);
-
         popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
-        popularModelList = new ArrayList<>();
-        popularAdapters = new PopularAdapters(getActivity(), popularModelList);
-        popularRec.setAdapter(popularAdapters);
 
+        Api_Interface apiInterface = ApiServicesGenerator.createService(Api_Interface.class);
+        Call<PopularModelResponse> call = apiInterface.recuperar_negocios();
+
+        /* TRAE LOS DATOS DE LA API  */
+        call.enqueue(new Callback<PopularModelResponse>() {
+            @Override
+            public void onResponse(Call<PopularModelResponse> call, Response<PopularModelResponse> response) {
+
+                if (response.isSuccessful()) {
+                    PopularModelResponse negocios_response = response.body();
+                    List<PopularModel> negocios = negocios_response.getNegocios();
+                    LISTA_NEGOCIOS = negocios;
+
+                    /* ASIGNA LOS DATOS COM PARAMETRO PARA EL ADAPTER */
+                    //popularModelList = new ArrayList<>();
+                    popularAdapters = new PopularAdapters(getActivity(), LISTA_NEGOCIOS);
+                    popularRec.setAdapter(popularAdapters);
+
+                    System.out.println("Si jalo pa");
+
+                }else{
+                    System.out.println("No jalo pa");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PopularModelResponse> call, Throwable t) {
+                System.out.println("No jalo el llamado pa ");
+            }
+        });
+
+
+
+/*
         db.collection("PopularNegocios")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -110,6 +137,8 @@ public class InicioFragment extends Fragment {
                         }
                     }
                 });
+
+ */
         return view;
     }
 }

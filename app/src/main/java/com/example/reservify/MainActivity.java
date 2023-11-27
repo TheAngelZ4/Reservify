@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.reservify.Sessions.SessionManager;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +20,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        SessionManager sessionManager = new SessionManager(this);
+
+        if (sessionManager.getUserId() != -1){
+            Intent intent = new Intent(this, MainScreen.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     public void IrRegistrar(View view){

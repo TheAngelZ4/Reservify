@@ -44,6 +44,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.4.0"))
     implementation("com.google.firebase:firebase-auth:22.2.0")
     implementation("com.google.firebase:firebase-database")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // Para convertir JSON a objetos Java
 
     implementation ("com.airbnb.android:lottie:6.1.0")
 

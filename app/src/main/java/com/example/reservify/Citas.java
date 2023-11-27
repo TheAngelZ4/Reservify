@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.reservify.databinding.ActivityCitasBinding;
-
+import com.example.reservify.models.PopularModel;
 
 
 public class Citas extends AppCompatActivity {
