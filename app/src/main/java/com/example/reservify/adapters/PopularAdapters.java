@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.reservify.Citas;
-import com.example.reservify.PopularModel;
+import com.example.reservify.models.PopularModel;
 import com.example.reservify.R;
 
 
@@ -81,6 +81,7 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
                 progressBar.setVisibility(View.GONE);
             }
         }
+
 
     }
 }

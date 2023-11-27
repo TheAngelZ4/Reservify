@@ -1,29 +1,33 @@
-package com.example.reservify;
+package com.example.reservify.models;
 
 import java.io.Serializable;
 
 public class PopularModel implements Serializable {
-    String id, nombre, descripcion, valoracion, tipo, imagen;
+    String idNegocio, nombre, descripcion, valoracion, categoria, foto, direccion, horaApertura, horaCierre;
 
     public PopularModel() {
 
     }
 
-    public PopularModel(String id, String nombre, String descripcion, String valoracion, String tipo, String imagen) {
-        this.id = id;
+    public PopularModel(String idNegocio, String nombre, String descripcion, String valoracion, String categoria, String direccion, String horaApertura
+            , String horaCierre, String foto) {
+        this.idNegocio = idNegocio;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.valoracion = valoracion;
-        this.tipo = tipo;
-        this.imagen = imagen;
+        this.categoria = categoria;
+        this.foto = foto;
+        this.direccion = direccion;
+        this.horaApertura = horaApertura;
+        this.horaCierre = horaCierre;
     }
 
     public String getId() {
-        return id;
+        return idNegocio;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.idNegocio = id;
     }
 
     public String getNombre() {
@@ -50,19 +54,11 @@ public class PopularModel implements Serializable {
         this.valoracion = valoracion;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String getImagen() {
-        return imagen;
+        return foto;
     }
 
     public void setImagen(String imagen) {
-        this.imagen = imagen;
+        this.foto = imagen;
     }
 }

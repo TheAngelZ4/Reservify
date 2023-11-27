@@ -7,18 +7,21 @@ import androidx.fragment.app.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.reservify.Sessions.SessionManager;
 import com.example.reservify.databinding.ActivityMainScreenBinding;
 
 public class MainScreen extends AppCompatActivity {
-
-    private
 
     ActivityMainScreenBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         binding = ActivityMainScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         remplazarFragment(new InicioFragment());
