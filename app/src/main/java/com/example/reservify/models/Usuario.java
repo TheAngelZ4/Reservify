@@ -19,8 +19,6 @@ public class Usuario {
    this.correo = correo;
    this.pass = pass;
    this.telefono = telefono;
-
-
    }
 
    public Integer getIdUsuario(){

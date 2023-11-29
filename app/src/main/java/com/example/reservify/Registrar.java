@@ -1,8 +1,7 @@
 package com.example.reservify;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -10,29 +9,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import java.util.HashMap;
+
+import com.example.reservify.API.ApiServicesGenerator;
+import com.example.reservify.API.Api_Interface;
+import com.example.reservify.models.Usuario;
+import com.example.reservify.models.UsuarioResponse;
+
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Registrar extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
     Button btnRegistrar;
-    EditText edtNombre, edtApellidos ,edtCorreo, edtContra, edtContraConfi;
-    String nombre = " ", apellidos = " " ,correo = " ", contrasena = " ", confirmarcontra = " ";
+    EditText edtNombre, edtApellidos, edtTelefono, edtCorreo, edtContra, edtContraConfi;
+    String nombre = " ", apellidos = " " ,telefono = " ",correo = " ", contrasena = " ", confirmarcontra = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-        mAuth = FirebaseAuth.getInstance();
         edtNombre = findViewById(R.id.edtNombre);
         edtApellidos = findViewById(R.id.edtApellidos);
+        edtTelefono = findViewById(R.id.edtNumTel);
         edtCorreo = findViewById(R.id.edtcorreo);
         edtContra = findViewById(R.id.edtcontra);
         edtContraConfi = findViewById(R.id.edtContraConfi);
@@ -49,6 +50,7 @@ public class Registrar extends AppCompatActivity {
         nombre = edtNombre.getText().toString();
         apellidos = edtApellidos.getText().toString();
         correo = edtCorreo.getText().toString();
+        telefono = edtTelefono.getText().toString();
         contrasena = edtContra.getText().toString();
         confirmarcontra = edtContraConfi.getText().toString();
 
@@ -67,51 +69,27 @@ public class Registrar extends AppCompatActivity {
         } else if (!contrasena.equals(confirmarcontra)) {
             Toast.makeText(this,"Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
         } else {
-            crearCuenta();
+            //Crear la cuenta de usuario.
+            /* Consumo de Api para recuperar Id del Usuario */
+            Api_Interface apiInterface = ApiServicesGenerator.createService(Api_Interface.class);
+            Call<UsuarioResponse> call = apiInterface.registrar(nombre, apellidos, telefono, correo, contrasena);
+
+            call.enqueue(new Callback<UsuarioResponse>() {
+                @Override
+                public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+                    if(response.isSuccessful()){
+                        UsuarioResponse usuario_response = response.body();
+                        Usuario usuario = usuario_response.getUsuario();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+
+                }
+            });
         }
-    }
-
-    private void crearCuenta() {
-        //Crear la cuenta de usuario.
-        mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                guardarInformacion();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Registrar.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void guardarInformacion() {
-        String uid = mAuth.getUid();
-        HashMap<String, String> datos = new HashMap<>();
-        datos.put("iud", uid);
-        datos.put("nombre", nombre);
-        datos.put("apellido", apellidos);
-        datos.put("correo", correo);
-        datos.put("contrasena", contrasena);
-
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Usuarios");
-        databaseReference.child(uid)
-                .setValue(datos)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(Registrar.this, "Cuenta creada exitosamente", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Registrar.this, MainScreen.class));
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Registrar.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
     }
 
 }

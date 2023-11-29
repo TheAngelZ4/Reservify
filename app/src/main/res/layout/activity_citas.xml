@@ -8,7 +8,6 @@
     android:background="@color/white"
     tools:context=".Citas">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -119,6 +118,51 @@
         app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#191919"
+        android:textColor="@color/white"
+        android:layout_marginTop="48dp"
+        android:text="Fecha"
+        app:layout_constraintTop_toBottomOf="@+id/descripcion"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/btnHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#191919"
+        android:textColor="@color/white"
+        android:text="Hora"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalendario"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/edtCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:textColorHint="#333333"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/btnCalendario"
+        tools:layout_editor_absoluteY="527dp" />
+
+    <EditText
+        android:id="@+id/edtHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:textColorHint="#333333"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/btnHora"
+        tools:layout_editor_absoluteY="611dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

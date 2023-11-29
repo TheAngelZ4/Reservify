@@ -44,24 +44,4 @@ public class MainScreen extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-
-    public void salir(){
-        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.app_name);
-        builder.setIcon(R.mipmap.ic_launcher_round);
-        builder.setMessage("¿Ya te vas? Te vamos a extrañar:(")
-                .setPositiveButton("Volvere Pronto", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        finish();
-                    }
-                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        dialog.dismiss();
-                    }
-                });
-        builder.create();
-        builder.show();
-}
 }

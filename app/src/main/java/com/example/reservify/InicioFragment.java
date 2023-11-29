@@ -15,7 +15,6 @@ import com.example.reservify.API.Api_Interface;
 import com.example.reservify.adapters.PopularAdapters;
 import com.example.reservify.models.PopularModel;
 import com.example.reservify.models.PopularModelResponse;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
@@ -72,8 +71,6 @@ public class InicioFragment extends Fragment {
         }
     }
     RecyclerView  popularRec;
-    FirebaseFirestore db;
-    List <PopularModel> popularModelList;
     PopularAdapters popularAdapters;
 
     @Override
@@ -81,9 +78,6 @@ public class InicioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
-
-
-        //db = FirebaseFirestore.getInstance();
 
         popularRec = view.findViewById(R.id.negocios_rec);
         popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -102,7 +96,6 @@ public class InicioFragment extends Fragment {
                     LISTA_NEGOCIOS = negocios;
 
                     /* ASIGNA LOS DATOS COM PARAMETRO PARA EL ADAPTER */
-                    //popularModelList = new ArrayList<>();
                     popularAdapters = new PopularAdapters(getActivity(), LISTA_NEGOCIOS);
                     popularRec.setAdapter(popularAdapters);
 
@@ -119,26 +112,6 @@ public class InicioFragment extends Fragment {
             }
         });
 
-
-
-/*
-        db.collection("PopularNegocios")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                PopularModel popularModel = document.toObject(PopularModel.class);
-                                popularModelList.add(popularModel);
-                                popularAdapters.notifyDataSetChanged();
-                            }
-                        } else {
-                            Toast.makeText(getActivity(), "Error"+task.getException(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
- */
         return view;
     }
 }

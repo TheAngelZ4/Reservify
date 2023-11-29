@@ -3,8 +3,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
@@ -15,23 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import com.example.reservify.API.ApiServicesGenerator;
+import com.example.reservify.API.Api_Interface;
 import com.example.reservify.Sessions.SessionManager;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+import com.example.reservify.models.UsuarioResponse;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
 
 
 public class PerfilFragment extends Fragment {
@@ -41,11 +31,7 @@ public class PerfilFragment extends Fragment {
     private static final String ARG_PARAM1 = "param3";
     private static final String ARG_PARAM2 = "param3";
 
-    FirebaseDatabase database;
-    FirebaseStorage storage;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-    DatabaseReference Base_De_Datos;
+
     Button  btnActualizar, btnCerrar;
     CircleImageView fotoPerfil;
     TextView txtNombre, txtApellido, txtCorreo;
@@ -92,11 +78,7 @@ public class PerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        Base_De_Datos = FirebaseDatabase.getInstance().getReference("Usuarios");
-        database = FirebaseDatabase.getInstance();
-        storage = FirebaseStorage.getInstance();
+
 
         txtNombre = view.findViewById(R.id.txtNombre);
         txtApellido = view.findViewById(R.id.txtApellido);
@@ -104,6 +86,12 @@ public class PerfilFragment extends Fragment {
         fotoPerfil = view.findViewById(R.id.fotoCirculoPerfil);
         btnActualizar = view.findViewById(R.id.btnActualizar);
         btnCerrar = view.findViewById(R.id.btnCerrar);
+
+        String Nombre = txtNombre.getText().toString();
+        String Apellido = txtApellido.getText().toString();
+        String Correo = txtCorreo.getText().toString();
+
+
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,61 +104,6 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        fotoPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent, 33);
-            }
-        });
-
-        //Obtenemos los datos del usuario
-        Base_De_Datos.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Validando la exsitencia del usuario
-                if (snapshot.exists()){
-                    //Se extraen los datos
-                    String nombre = ""+snapshot.child("nombre").getValue();
-                    String apellido = ""+snapshot.child("apellido").getValue();
-                    String correo = ""+snapshot.child("correo").getValue();
-
-                    txtNombre.setText(nombre);
-                    txtApellido.setText(apellido);
-                    txtCorreo.setText(correo);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         return view;
-        }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data.getData()!=null){
-            Uri perfilUri = data.getData();
-            fotoPerfil.setImageURI(perfilUri);
-
-            final StorageReference reference = storage.getReference().child("imagenPerfil")
-                    .child(FirebaseAuth.getInstance().getUid());
-
-            reference.putFile(perfilUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-              @Override
-              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                  Uri uri = firebaseAuth.getCurrentUser().getPhotoUrl();
-                    Picasso.get().load(uri).into(fotoPerfil);
-                    Toast.makeText(getContext(), "Imagen Actualizada", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }else{
-            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-        }
     }
 }
-

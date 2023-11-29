@@ -5,23 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="40dp"
-        tools:context=".CitasFragment">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="93dp"
-            android:layout_height="99dp"
-            android:layout_margin="80dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/enter"
-            tools:layout_editor_absoluteY="44dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#191919"
+                app:title="Mis citas"
+                app:titleTextColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="140dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="-412dp"
+                android:layout_marginTop="62dp"
+                app:srcCompat="@drawable/dates" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="220dp"
+                android:layout_height="116dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="62dp"
+                app:srcCompat="@drawable/reservify" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_citas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_margin="5dp"/>
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="107dp"
@@ -58,6 +82,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/enter" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

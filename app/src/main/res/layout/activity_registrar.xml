@@ -75,7 +75,7 @@
         android:id="@+id/edtApellidos"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/person"
         android:drawablePadding="10dp"
@@ -84,7 +84,24 @@
         android:textColor="#252525"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombre" />
+
+    <EditText
+        android:id="@+id/edtNumTel"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/edittext_background"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="10dp"
+        android:hint="Ingresa tu número:"
+        android:inputType="number"
+        android:textColor="#252525"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNombre" />
 
@@ -92,7 +109,7 @@
         android:id="@+id/edtcorreo"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
@@ -106,28 +123,10 @@
         app:layout_constraintTop_toBottomOf="@+id/edtApellidos" />
 
     <EditText
-        android:id="@+id/edtcontra"
-        android:layout_width="316dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:drawableStart="@drawable/password"
-        android:drawablePadding="10dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Ingresa una contraseña:"
-        android:inputType="textPassword"
-        android:textColor="#252525"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtcorreo"
-        app:passwordToggleEnabled="true" />
-
-    <EditText
         android:id="@+id/edtContraConfi"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edittext_background"
         android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
@@ -139,6 +138,24 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtcontra"
+        app:passwordToggleEnabled="true" />
+
+    <EditText
+        android:id="@+id/edtcontra"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/edittext_background"
+        android:drawableStart="@drawable/password"
+        android:drawablePadding="10dp"
+        android:hint="Ingresa una contraseña:"
+        android:inputType="textPassword"
+        android:textColor="#252525"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtcorreo"
         app:passwordToggleEnabled="true" />
 
     <Button
