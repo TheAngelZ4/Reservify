@@ -96,21 +96,7 @@ public class PerfilFragment extends Fragment {
         String Apellido = txtApellido.getText().toString();
         String Correo = txtCorreo.getText().toString();
 
-        String[] opciones = {"¿Qué es Reservify?", "¿Cuál es el objetivo de  Reservify?", "¿Para quién esta creado Reservify?"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, opciones);
 
-        spinnerFQA.setAdapter(adapter);
-
-       String select = spinnerFQA.getSelectedItem().toString();
-
-       if (select.equals("¿Qué es Reservify?"))
-       {
-            txtrespuesta.setText("No sé");
-       }else
-           if (select.equals(""))
-           {
-
-           }
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +108,56 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_items, R.layout.my_selected_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        spinnerFQA.setAdapter(adapter);
+
+        spinnerFQA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                showResponse(selectedItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         return view;
     }
+        private void showResponse(String selectedItem){
+            // Mostrar respuesta dependiendo del elemento seleccionado
+            String response;
+
+            switch (selectedItem) {
+                case "Selecciona una pregunta:":
+                    response = " ";
+                    break;
+                case "¿Qué es Reservify?":
+                    response = "Plataforma que busca centralizar negocios locales, proporcionando a las personas la facilidad de encontrar servicios y a los propietarios de negocios una mayor visibilidad y un sistema de gestión de citas para mejorar la organización.";
+                    break;
+                case "¿Para quién esta creado Reservify?":
+                    response = "Reservify está creado tanto para personas que buscan servicios de cualquier tiopo, como para propietarios de negocios. ";
+                    break;
+                case "¿Quién creo Reservify?":
+                    response = "Un pequeño equipo de estudiantes.";
+                    break;
+                case "¿Puedo cancelar un cita sin penalización?":
+                    response = "Sí. Puedes cancelar un cita en cualquier momento.";
+                    break;
+                default:
+                    response = " ";
+                    break;
+            }
+
+            txtrespuesta.setText(response);
+        }
+
 }
+
+
+
