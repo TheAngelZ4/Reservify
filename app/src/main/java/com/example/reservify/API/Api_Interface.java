@@ -24,17 +24,16 @@ public interface Api_Interface {
         @Path("correo") String correo,
         @Path("pass") String pass );
 
+    @GET("api/Usuario/{id}")
+    Call<UsuarioResponse> getUsuario(@Path("id") Integer id);
+
     @POST("api/Usuario/registrarUsuario")
-    Call<UsuarioResponse> registrar(
-            @Path("correo") String correo,
-            @Path("pass") String pass,
-            @Path("nombre") String nombre,
-            @Path("apellidos") String apellidos,
-            @Path ("telefono") String telefono);
+    Call<UsuarioResponse> registrar(@Body Usuario usuario);
 
     @GET("api/Citas/GetCitasUsuarioApp/{id}")
     Call<List<Cita>> citasUsuario(
         @Path("id") Integer id);
+
     @POST("api/Citas")
     Call<AgendarCitas> agendar_cita(@Body AgendarCitas cita);
 

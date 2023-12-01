@@ -17,7 +17,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/txtnumero"
+        android:id="@+id/txtTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -91,21 +91,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtCorreo2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="340dp"
-        android:text="Correo"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btnCerrar"
         android:layout_width="322dp"
@@ -131,7 +116,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtnumero" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
 
     <Spinner
         android:id="@+id/spinnerFQA"

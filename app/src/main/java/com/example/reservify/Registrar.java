@@ -2,6 +2,8 @@ package com.example.reservify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -41,12 +43,12 @@ public class Registrar extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validarDatos();
+                validarDatos(view);
             }
         });
     }
 
-    private void validarDatos(){
+    private void validarDatos(View view){
         nombre = edtNombre.getText().toString();
         apellidos = edtApellidos.getText().toString();
         correo = edtCorreo.getText().toString();
@@ -76,15 +78,24 @@ public class Registrar extends AppCompatActivity {
             //Crear la cuenta de usuario.
             /* Consumo de Api para recuperar Id del Usuario */
             Api_Interface apiInterface = ApiServicesGenerator.createService(Api_Interface.class);
-            Call<UsuarioResponse> call = apiInterface.registrar(nombre, apellidos, telefono, correo, contrasena);
+            Usuario usuario = new Usuario(null, null, nombre, apellidos, correo, contrasena, telefono);
+            Call<UsuarioResponse> call = apiInterface.registrar(usuario);
 
             call.enqueue(new Callback<UsuarioResponse>() {
                 @Override
                 public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                     if(response.isSuccessful()){
                         UsuarioResponse usuario_response = response.body();
-                        Usuario usuario = usuario_response.getUsuario();
 
+                        if (usuario_response.getMensaje().equals("okay")){
+                            Intent intent = new Intent( view.getContext() ,Login.class);
+                            startActivity(intent);
+                            Toast.makeText(view.getContext(),"Se registro satisfactoriamente :D",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }else{
+                        Toast.makeText(getBaseContext(), "No se ha podido registrar satisfactoriamente :c",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
 

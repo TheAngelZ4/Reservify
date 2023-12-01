@@ -1,4 +1,5 @@
 package com.example.reservify;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,10 +23,13 @@ import android.widget.Toast;
 import com.example.reservify.API.ApiServicesGenerator;
 import com.example.reservify.API.Api_Interface;
 import com.example.reservify.Sessions.SessionManager;
+import com.example.reservify.models.Usuario;
 import com.example.reservify.models.UsuarioResponse;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class PerfilFragment extends Fragment {
@@ -35,10 +39,12 @@ public class PerfilFragment extends Fragment {
     private static final String ARG_PARAM1 = "param3";
     private static final String ARG_PARAM2 = "param3";
 
+    private SessionManager sessionManager;
 
     Button  btnActualizar, btnCerrar;
     CircleImageView fotoPerfil;
-    TextView txtNombre, txtApellido, txtCorreo, txtrespuesta;
+    TextView txtNombre,txtApellido,txtCorreo, txtrespuesta, txtTelefono;
+
     Spinner spinnerFQA;
 
     // TODO: Rename and change types of parameters
@@ -65,6 +71,7 @@ public class PerfilFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -74,6 +81,45 @@ public class PerfilFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        Context context = requireContext();
+        sessionManager = new SessionManager(context);
+        Integer id_user = sessionManager.getUserId();
+
+        /* Consumo de Api para recuperar Id del Usuario */
+        Api_Interface apiInterface = ApiServicesGenerator.createService(Api_Interface.class);
+        Call<UsuarioResponse> call = apiInterface.getUsuario(id_user);
+
+        /* TRAE LOS DATOS DE LA API  */
+        call.enqueue(new Callback<UsuarioResponse>() {
+            @Override
+            public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    UsuarioResponse usuario_response = response.body();
+                    Usuario usuario = usuario_response.getUsuario();
+
+                    Integer id_usuario = usuario.getIdUsuario();
+                    txtNombre.setText("Nombre: "+ usuario.getNombre());
+                    txtApellido.setText("Apellidos: "+ usuario.getApellidos());
+                    txtCorreo.setText("Correo: "+ usuario.getCorreo());
+                    txtTelefono.setText("Telefono: "+ usuario.getTelefono());
+                    }else{
+                        Toast.makeText(context, "No se ha encontrado informacion del usuario",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                String errorMessage = t.getMessage();
+                System.out.println("Error: " + errorMessage);
+                System.out.println("No jalo el llamado pa ");
+            }
+
+        });
 
     }
 
@@ -89,6 +135,7 @@ public class PerfilFragment extends Fragment {
         txtNombre = view.findViewById(R.id.txtNombre);
         txtApellido = view.findViewById(R.id.txtApellido);
         txtCorreo = view.findViewById(R.id.txtCorreo);
+        txtTelefono = view.findViewById(R.id.txtTelefono);
         fotoPerfil = view.findViewById(R.id.fotoCirculoPerfil);
         btnCerrar = view.findViewById(R.id.btnCerrar);
 

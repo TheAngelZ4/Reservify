@@ -13,5 +13,8 @@ public class UsuarioResponse {
     public Usuario getUsuario(){
         return this.response;
     }
+    public String getMensaje(){
+        return this.mensaje;
+    }
 
 }

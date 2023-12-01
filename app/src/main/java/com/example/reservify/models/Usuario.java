@@ -25,4 +25,17 @@ public class Usuario {
       return this.idUsuario;
    }
 
+   public String getNombre(){
+      return this.nombre;
+   }
+   public String getApellidos(){
+      return this.apellidos;
+   }
+   public String getCorreo(){
+      return this.correo;
+   }
+
+   public String getTelefono(){
+      return this.telefono;
+   }
 }
