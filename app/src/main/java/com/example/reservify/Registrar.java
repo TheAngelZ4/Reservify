@@ -60,7 +60,11 @@ public class Registrar extends AppCompatActivity {
             Toast.makeText(this, "Ingrese un apellido", Toast.LENGTH_SHORT).show();
         } else if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()){
             Toast.makeText(this, "Ingrese un correo valido", Toast.LENGTH_SHORT).show();
-        } else if (contrasena.length()<6) {
+        }else if (TextUtils.isEmpty(telefono)){
+            Toast.makeText(this, "Ingrese un número telefonico valido", Toast.LENGTH_SHORT).show();
+        } else if(telefono.length()<10){
+            Toast.makeText(this, "El número telefonico es menos 10 digitos", Toast.LENGTH_SHORT).show();
+        }else if (contrasena.length()<6) {
             Toast.makeText(this, "La contraseña debe ser igual o mayor a 6 caracteres", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(contrasena)){
             Toast.makeText(this, "Ingresar contraseña", Toast.LENGTH_SHORT).show();

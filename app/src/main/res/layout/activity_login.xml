@@ -96,7 +96,7 @@
         android:layout_height="44dp"
         android:layout_marginBottom="88dp"
         android:backgroundTint="#191919"
-        android:onClick="IniciarSesion"
+        android:onClick="Iniciar"
         android:text="Iniciar sesión"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
