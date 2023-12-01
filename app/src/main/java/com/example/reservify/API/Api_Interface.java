@@ -1,10 +1,12 @@
 package com.example.reservify.API;
 
+import com.example.reservify.models.AgendarCitas;
 import com.example.reservify.models.PopularModelResponse;
 import com.example.reservify.models.Usuario;
 import com.example.reservify.models.UsuarioResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -27,6 +29,8 @@ public interface Api_Interface {
             @Path("apellidos") String apellidos,
             @Path ("telefono") String telefono);
 
+    @POST("api/Citas")
+    Call<AgendarCitas> agendar_cita(@Body AgendarCitas cita);
 
     /*
     @GET("http://10.0.2.2:8000/api/articulos_costos")

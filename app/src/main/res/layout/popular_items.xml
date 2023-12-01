@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="15dp"
-    android:backgroundTint="@color/white">
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
             android:id="@+id/pop_img"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_foreground"
@@ -29,53 +28,56 @@
             android:id="@+id/pop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
             android:text="Lugares Populares"
             android:textColor="@color/black"
-            android:paddingTop="10dp"
-            android:paddingLeft="5dp"
             android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pop_des"
-            android:paddingLeft="5dp"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:paddingLeft="5dp"
             android:singleLine="true"
             android:text="Descripcion"
             android:textColor="@color/black"
             android:textSize="16dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ratingstar"
-            android:layout_marginLeft="-5dp"/>
-        <TextView
-            android:id="@+id/valor"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="16dp"
-            android:text="4.0"
-            android:layout_weight="1"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:paddingRight="10dp"
-            android:text="Descuento del 20%"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:textColor="@color/black"/>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="-5dp"
+                android:src="@drawable/ratingstar" />
+
+            <TextView
+                android:id="@+id/valor"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:text="4.0"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:paddingRight="10dp"
+                android:text="Descuento del 20%"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

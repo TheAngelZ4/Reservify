@@ -80,7 +80,7 @@ public class InicioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
         popularRec = view.findViewById(R.id.negocios_rec);
-        popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
 
         Api_Interface apiInterface = ApiServicesGenerator.createService(Api_Interface.class);
         Call<PopularModelResponse> call = apiInterface.recuperar_negocios();
