@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.reservify.API.ApiServicesGenerator;
@@ -34,8 +38,8 @@ public class PerfilFragment extends Fragment {
 
     Button  btnActualizar, btnCerrar;
     CircleImageView fotoPerfil;
-    TextView txtNombre, txtApellido, txtCorreo;
-    Uri imagenUri = null;
+    TextView txtNombre, txtApellido, txtCorreo, txtrespuesta;
+    Spinner spinnerFQA;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,20 +83,34 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        txtrespuesta = view.findViewById(R.id.txtrespuesta);
+        spinnerFQA = view.findViewById(R.id.spinnerFQA);
 
         txtNombre = view.findViewById(R.id.txtNombre);
         txtApellido = view.findViewById(R.id.txtApellido);
         txtCorreo = view.findViewById(R.id.txtCorreo);
         fotoPerfil = view.findViewById(R.id.fotoCirculoPerfil);
-        btnActualizar = view.findViewById(R.id.btnActualizar);
         btnCerrar = view.findViewById(R.id.btnCerrar);
 
         String Nombre = txtNombre.getText().toString();
         String Apellido = txtApellido.getText().toString();
         String Correo = txtCorreo.getText().toString();
 
+        String[] opciones = {"¿Qué es Reservify?", "¿Cuál es el objetivo de  Reservify?", "¿Para quién esta creado Reservify?"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, opciones);
 
+        spinnerFQA.setAdapter(adapter);
 
+       String select = spinnerFQA.getSelectedItem().toString();
+
+       if (select.equals("¿Qué es Reservify?"))
+       {
+            txtrespuesta.setText("No sé");
+       }else
+           if (select.equals(""))
+           {
+
+           }
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
