@@ -99,7 +99,6 @@ public class CitasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_citas, container, false);
         citasRec = view.findViewById(R.id.rec_citas);
         citasRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-        return view;
 
         Context contexto = requireContext();
         sessionManager = new SessionManager(contexto);
