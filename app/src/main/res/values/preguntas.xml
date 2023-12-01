@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_items">
+        <item>Selecciona una pregunta: </item>
+        <item>¿Qué es Reservify?</item>
+        <item>¿Para quién esta creado Reservify?</item>
+        <item>¿Quién creo Reservify?</item>
+        <item>¿Puedo cancelar un cita sin penalización?</item>
+
+    </string-array>
+</resources>

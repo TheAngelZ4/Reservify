@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".PerfilFragment"
-    android:orientation="vertical"
-    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
@@ -137,9 +135,13 @@
 
     <Spinner
         android:id="@+id/spinnerFQA"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginTop="24dp"
+        android:dropDownSelector="@color/black"
+        android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,14 +149,15 @@
 
     <TextView
         android:id="@+id/txtrespuesta"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="TextView"
+        android:layout_marginTop="25dp"
         android:textColor="@color/black"
+        android:textSize="16dp"
+        android:background="@drawable/edittext_background"
         app:layout_constraintBottom_toTopOf="@+id/btnCerrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerFQA"
         app:layout_constraintVertical_bias="0.0" />
