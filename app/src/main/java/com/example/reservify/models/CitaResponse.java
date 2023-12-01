@@ -1,8 +1,13 @@
 package com.example.reservify.models;
-
+import java.util.List;
 public class CitaResponse {
     public String mensaje;
-    public Cita response;
+    public List<Cita> response;
 
-    public CitaResponse(String mensaje)
+    public CitaResponse(String mensaje, List<Cita> response){
+        this.mensaje = mensaje;
+        this.response = response;
+    }
+
+
 }

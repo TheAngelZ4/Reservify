@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     app:cardCornerRadius="15dp"
@@ -18,8 +18,8 @@
             android:id="@+id/pop_img"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_foreground"
@@ -29,20 +29,44 @@
             android:id="@+id/pop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
             android:text="Mi cita"
             android:textColor="@color/black"
-            android:paddingTop="10dp"
-            android:paddingLeft="5dp"
             android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/info_cita"
-            android:paddingLeft="5dp"
-            android:layout_width="190dp"
+            android:layout_width="391dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="informacion cita"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/info_cita2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="informacion cita"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/info_cita3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingLeft="5dp"
             android:singleLine="true"
             android:text="informacion cita"
             android:textColor="@color/black"
