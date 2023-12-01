@@ -84,38 +84,7 @@
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:padding="8dp"
-            android:text="Explorar Negocios"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtVerExplorar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="7dp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:gravity="end"
-            android:text="Ver todo"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:id="@+id/negocios_rec2"/>
+        android:weightSum="2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -123,34 +92,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
-        android:weightSum="2">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:padding="8dp"
-            android:text="Negocios Recomendados"
-            android:textColor="#000000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/txtnegociosRecom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="7dp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:gravity="end"
-            android:text="Ver todo"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:id="@+id/pop_rec3"/>
+        android:weightSum="2"/>
 
 </LinearLayout>
 

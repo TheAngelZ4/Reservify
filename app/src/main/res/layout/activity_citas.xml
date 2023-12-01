@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -51,22 +50,26 @@
         android:id="@+id/ranking"
         android:layout_width="75dp"
         android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="10dp"
         android:src="@drawable/ratingstar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detalleImagen"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="14dp"/>
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toEndOf="@+id/Nombre"
+        app:layout_constraintTop_toBottomOf="@+id/detalleImagen" />
 
     <TextView
         android:id="@+id/detalleRanking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="6dp"
         android:text="4.0"
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintEnd_toStartOf="@+id/ranking"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toEndOf="@+id/Nombre"
         app:layout_constraintTop_toBottomOf="@+id/detalleImagen" />
 
     <TextView
@@ -99,61 +102,77 @@
         android:id="@+id/agendar"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/edittext_background"
+        android:onClick="AgendarCita"
         android:text="Agendar"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintHorizontal_bias="0.963"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnCalendario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#191919"
-        android:textColor="@color/white"
-        android:layout_marginTop="48dp"
-        android:text="Fecha"
-        app:layout_constraintTop_toBottomOf="@+id/descripcion"
-        tools:layout_editor_absoluteX="16dp" />
 
     <Button
         android:id="@+id/btnHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="64dp"
         android:backgroundTint="#191919"
-        android:textColor="@color/white"
         android:text="Hora"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalendario"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <EditText
-        android:id="@+id/edtCalendario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:textColorHint="#333333"
-        android:layout_marginStart="36dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/btnCalendario"
-        tools:layout_editor_absoluteY="527dp" />
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
     <EditText
         android:id="@+id/edtHora"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="124dp"
+        android:layout_height="47dp"
         android:background="@drawable/edittext_background"
-        android:textColorHint="#333333"
-        android:layout_marginStart="36dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/btnHora"
-        tools:layout_editor_absoluteY="611dp" />
+        android:padding="10sp"
+        android:textColorHint="#333333"
+        app:layout_constraintBottom_toTopOf="@+id/agendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toEndOf="@+id/edtCalendario"
+        app:layout_constraintTop_toBottomOf="@+id/btnHora"
+        app:layout_constraintVertical_bias="0.093" />
 
+    <Button
+        android:id="@+id/btnCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#191919"
+        android:text="Fecha"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnHora"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripcion" />
+
+    <EditText
+        android:id="@+id/edtCalendario"
+        android:layout_width="130dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        android:textColorHint="#333333"
+        app:layout_constraintBottom_toTopOf="@+id/agendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalendario"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <TextView
+        android:id="@+id/tv_id_negocio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

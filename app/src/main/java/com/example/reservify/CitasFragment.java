@@ -29,6 +29,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import java.util.List;
 
+import com.example.reservify.API.ApiServicesGenerator;
+import com.example.reservify.API.Api_Interface;
+import com.example.reservify.adapters.PopularAdapters;
+import com.example.reservify.models.PopularModel;
+import com.example.reservify.models.PopularModelResponse;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CitasFragment#newInstance} factory method to
@@ -87,6 +99,7 @@ public class CitasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_citas, container, false);
         citasRec = view.findViewById(R.id.rec_citas);
         citasRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+        return view;
 
         Context contexto = requireContext();
         sessionManager = new SessionManager(contexto);
