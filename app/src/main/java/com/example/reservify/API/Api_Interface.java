@@ -1,9 +1,12 @@
 package com.example.reservify.API;
 
+import com.example.reservify.models.Cita;
 import com.example.reservify.models.AgendarCitas;
 import com.example.reservify.models.PopularModelResponse;
 import com.example.reservify.models.Usuario;
 import com.example.reservify.models.UsuarioResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,6 +32,9 @@ public interface Api_Interface {
             @Path("apellidos") String apellidos,
             @Path ("telefono") String telefono);
 
+    @GET("api/Citas/GetCitasUsuarioApp/{id}")
+    Call<List<Cita>> citasUsuario(
+        @Path("id") Integer id);
     @POST("api/Citas")
     Call<AgendarCitas> agendar_cita(@Body AgendarCitas cita);
 

@@ -99,6 +99,8 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UsuarioResponse> call, Throwable t) {
+                String errorMessage = t.getMessage();
+                System.out.println("Error: " + errorMessage);
                 System.out.println("No jalo el llamado pa ");
             }
 
