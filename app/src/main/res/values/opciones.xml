@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string-array name="preguntas_frecuentes">
-        <item>¿Qué es Reservify?</item>
-        <item>¿Cuál es el objetivo de  Reservify?</item>
-        <item>¿Para quien esta creado Reservify?</item>
-    </string-array>
-</resources>

@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void IniciarSesion(View view){
+    public void Iniciar(View view){
         /* Leer los datos de los et */
         String correo = edtcorreo.getText().toString();
         String password = edtcontra.getText().toString();

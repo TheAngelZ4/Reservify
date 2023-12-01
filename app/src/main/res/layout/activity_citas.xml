@@ -18,24 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Detalles del negocio"
-        app:titleMarginStart="50dp"
+        app:titleMarginStart="10dp"
         app:titleTextColor="@color/white" />
 
-    <ImageView
-        android:id="@+id/regresar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/detalleImagen"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
