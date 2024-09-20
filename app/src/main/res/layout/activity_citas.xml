@@ -102,14 +102,14 @@
         android:id="@+id/agendar"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edittext_background"
         android:onClick="AgendarCita"
         android:text="Agendar"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -124,33 +124,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
-    <EditText
-        android:id="@+id/edtHora"
-        android:layout_width="124dp"
-        android:layout_height="47dp"
-        android:background="@drawable/edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10sp"
-        android:textColorHint="#333333"
-        app:layout_constraintBottom_toTopOf="@+id/agendar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toEndOf="@+id/edtCalendario"
-        app:layout_constraintTop_toBottomOf="@+id/btnHora"
-        app:layout_constraintVertical_bias="0.093" />
-
     <Button
         android:id="@+id/btnCalendario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
         android:layout_marginTop="48dp"
         android:backgroundTint="#191919"
         android:text="Fecha"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/btnHora"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcion" />
 
@@ -158,15 +141,35 @@
         android:id="@+id/edtCalendario"
         android:layout_width="130dp"
         android:layout_height="44dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="40dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textColorHint="#333333"
         app:layout_constraintBottom_toTopOf="@+id/agendar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCalendario"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.327" />
+
+    <EditText
+        android:id="@+id/edtHora"
+        android:layout_width="130dp"
+        android:layout_height="44dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        android:padding="10sp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="#333333"
+        app:layout_constraintBottom_toTopOf="@+id/agendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toEndOf="@+id/edtCalendario"
+        app:layout_constraintTop_toBottomOf="@+id/btnHora"
+        app:layout_constraintVertical_bias="0.327" />
 
     <TextView
         android:id="@+id/tv_id_negocio"

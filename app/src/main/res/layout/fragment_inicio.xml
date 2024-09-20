@@ -36,6 +36,7 @@
         android:elevation="3dp"
         android:hint="Buscar"
         android:padding="8dp"
+        android:textColor="@color/black"
         android:inputType="text"
         android:textColorHint="#333333"/>
 
@@ -70,12 +71,13 @@
             android:textColor="#000000"
             android:textSize="15dp" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/negocios_rec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
